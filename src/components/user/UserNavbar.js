@@ -1,12 +1,12 @@
 import React from 'react';
 import {Link, useNavigate} from "react-router-dom";
-import {userAccountService} from "@/_services/user.account.service";
+import {authAccountService} from "@/_services/auth.account.service";
 
 
 const UserNavbar = () => {
     let navigate = useNavigate();
     const logout =()=>{
-        userAccountService.logout()
+        authAccountService.logout()
         navigate('/')
     }
     return (

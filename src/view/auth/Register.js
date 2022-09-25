@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './auth.scss'
 import {Link} from "react-router-dom";
-import {userAccountService} from "../../_services/user.account.service";
+import {authAccountService} from "@/_services/auth.account.service";
 const Register = () => {
     const [credentials, setCredentials] = useState({
         email: '',
@@ -18,7 +18,7 @@ const Register = () => {
     };
     const onSubmit = (e) => {
         e.preventDefault();
-        userAccountService.login(credentials).then((res)=>console.log(res))
+        authAccountService.register(credentials).then((res)=>console.log(res))
         console.log(credentials);
     };
 

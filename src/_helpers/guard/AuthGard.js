@@ -1,8 +1,8 @@
-import {userAccountService} from "../../_services/user.account.service";
+import {authAccountService} from "../../_services/auth.account.service";
 import {Navigate} from "react-router-dom";
 const AuthGard =({children})=>{
 
-    if(!userAccountService.isLogged()){
+    if(!authAccountService.isLogged()){
        return <Navigate to={'/auth/login'}/>
     }
     return children

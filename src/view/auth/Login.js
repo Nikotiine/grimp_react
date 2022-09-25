@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Link, useNavigate} from "react-router-dom";
-import {userAccountService} from "../../_services/user.account.service";
+import {authAccountService} from "@/_services/auth.account.service";
 
     const Login = () => {
         let navigate = useNavigate();
@@ -16,9 +16,10 @@ import {userAccountService} from "../../_services/user.account.service";
     }
     const onSubmit = (e)=>{
         e.preventDefault();
-        userAccountService.login(credentials)
+        authAccountService.login(credentials)
             .then((res)=> {
-                userAccountService.saveToken(res.data.token)
+                console.log(res)
+                authAccountService.saveToken(res.data.token)
                 navigate('/grimper')
             })
 
