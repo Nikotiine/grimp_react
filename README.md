@@ -5,6 +5,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Available Scripts
 
 In the project directory, you can run:
+### 'npm run startc'
+Runs the app in the development mode.\ with craco
 
 ### `npm start`
 
