@@ -1,21 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
+import {Link} from "react-router-dom";
 
-const UserForm = ({profil}) => {
 
-
-    const [credentials,setCredentials] = useState({
-        firstName: profil.firstName ? profil.firstName : '',
-        lastName: profil.lastName ? profil.lastName : '',
-        email: profil.email ? profil.email : '',
-        password: ''
-    })
-    const onChange = (e)=> {
-        setCredentials({
-            ...credentials,
-            [e.target.name]: e.target.value
-        });
-    }
-
+const UserForm = ({onChange,credentials,edit}) => {
+    const isEditUserProfil = !!edit
 
     return (
         <div>
@@ -45,6 +33,7 @@ const UserForm = ({profil}) => {
                     />
                 </div>
             </div>
+
             <div className="field">
                 <label className="label">Email</label>
                 <div className="control">
@@ -59,7 +48,8 @@ const UserForm = ({profil}) => {
                     />
                 </div>
             </div>
-            <div className="field">
+            { !isEditUserProfil  ?
+                <div className="field">
                 <label className="label">Password</label>
                 <div className="control">
                     <input
@@ -68,16 +58,22 @@ const UserForm = ({profil}) => {
                         name={'plainPassword'}
                         placeholder="********"
                         onChange={onChange}
-
                     />
                 </div>
-            </div>
+            </div> : ''}
+
             <div className="field is-grouped is-justify-content-flex-end">
+
                 <div className="control">
-                    <button className={'button is-link is-light'} >Annuler</button>
+                    {isEditUserProfil ?
+                        <button className={'button is-link is-light'} onClick={edit}>Annuler</button>
+                        :
+                        <Link to={'/home'} className={'button is-link is-light'}>Annuler</Link>
+                    }
+
                 </div>
                 <div className="control">
-                    <button className="button is-link" type={'submit'}>Modifier</button>
+                    <button className="button is-link" type={'submit'} >{isEditUserProfil  ? 'Modifier' :'Valider'}</button>
                 </div>
             </div>
         </div>

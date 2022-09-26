@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 
 const UserProfilCard = ({profil,edit}) => {
 
@@ -17,8 +18,8 @@ const UserProfilCard = ({profil,edit}) => {
                     </div>
                 </div>
                 <footer className="card-footer">
-                    <button onClick={edit} className="card-footer-item">Edit</button>
-
+                    <button onClick={edit} className="button is-primary card-footer-item">Modifer mon profil</button>
+                    <Link to={'/grimper/profil/change-password'} className={'button is-link card-footer-item'}>Changer mon mot de passe</Link>
                 </footer>
             </div>
         </div>
