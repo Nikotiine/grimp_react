@@ -2,8 +2,12 @@ import React, {useState} from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import {authAccountService} from "@/_services/auth.account.service";
 
+
     const Login = () => {
         let navigate = useNavigate();
+        const [errors,setErrors] = useState({
+            message:''
+        })
         const [credentials,setCrendentials] = useState({
             email:'',
             password:''
@@ -15,15 +19,22 @@ import {authAccountService} from "@/_services/auth.account.service";
            })
     }
     const onSubmit = (e)=>{
+
         e.preventDefault();
         authAccountService.login(credentials)
             .then((res)=> {
                 console.log(res)
-                authAccountService.saveToken(res.data.token)
+                authAccountService.saveData(res.data.token,res.data.id)
                 navigate('/grimper')
+            }).catch((err)=> {
+            console.log(err.response.data.message)
+            setErrors({
+                message: err.response.data.message
             })
+        })
 
     }
+
     return (
         <div className={'Login'}>
             <div className="box mx-auto max-50 mt-6">
@@ -31,7 +42,7 @@ import {authAccountService} from "@/_services/auth.account.service";
                 <form onSubmit={onSubmit}>
 
                     <div className="field">
-                        <label className="label">Email</label>
+                        <label className="label">Email </label>
                         <div className="control">
                             <input
                                 className="input"
@@ -42,6 +53,7 @@ import {authAccountService} from "@/_services/auth.account.service";
                                 onChange={onChange}
                             />
                         </div>
+                        <p className="help is-danger">{errors.message}</p>
                     </div>
                     <div className="field">
                         <label className="label">Password</label>

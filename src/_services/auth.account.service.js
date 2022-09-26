@@ -6,8 +6,9 @@ const login = (credentails) => {
 const register = (crendentials) => {
     return Axios.post('/users',crendentials)
 }
-const saveToken = (token) => {
+const saveData = (token,id) => {
     localStorage.setItem(access_token,token)
+    localStorage.setItem('id',id)
 }
 const getToken = () => {
     return localStorage.getItem(access_token)
@@ -20,4 +21,4 @@ const logout =() => {
     localStorage.removeItem(access_token)
 }
 
-export const  authAccountService = {login,register,saveToken,isLogged,logout,getToken}
+export const  authAccountService = {login,register,saveData,isLogged,logout,getToken}

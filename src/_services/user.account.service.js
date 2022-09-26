@@ -1,7 +1,9 @@
 import Axios from "./axios.service";
 
-const getProfil = () => {
-    return Axios.get('/users/'+7)
+const getProfil = async () => {
+    let id = localStorage.getItem('id')
+    const {data} = await Axios.get('/users/'+id)
+    return data
 }
 
 export const userAccountService = {getProfil}
