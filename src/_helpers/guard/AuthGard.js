@@ -1,4 +1,4 @@
-import {authAccountService} from "../../_services/auth.account.service";
+import {authAccountService} from "@/_services/auth.account.service";
 import {Navigate} from "react-router-dom";
 const AuthGard =({children})=>{
 
