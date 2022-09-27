@@ -1,7 +1,9 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import Moment from 'react-moment';
 
 const UserProfilCard = ({profil,edit}) => {
+
 
     return (
         <div>
@@ -14,7 +16,7 @@ const UserProfilCard = ({profil,edit}) => {
                         </div>
                     </div>
                     <div className="content">
-                        Membre depuis {profil.createdAt}
+                        Membre depuis <Moment date={profil.createdAt} format={"DD/MM/YYYY"}/>
                     </div>
                 </div>
                 <footer className="card-footer">

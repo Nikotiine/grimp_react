@@ -19,6 +19,7 @@ const isLogged = () => {
 }
 const logout =() => {
     localStorage.removeItem(access_token)
+    localStorage.removeItem('id')
 }
 
 export const  authAccountService = {login,register,saveData,isLogged,logout,getToken}
