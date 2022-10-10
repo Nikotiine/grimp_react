@@ -10,11 +10,10 @@ const UserProfil = () => {
     const editProfil = () => {
        setEdit(!edit)
     }
-    console.log(edit)
+
     const {isLoading,error,data} = useQuery('user',userAccountService.getProfil)
     const profil = data || {'data':''}
 
-    console.log(profil)
     return (
         <div className={'UserProfil'}>
             {edit ? <UserProfilCard profil={profil} edit={editProfil}/> : <UserEditForm profil={profil} edit={editProfil}/>}

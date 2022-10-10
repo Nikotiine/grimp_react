@@ -25,6 +25,7 @@ const UserNavbar = () => {
                         <div className="navbar-start">
                             <Link to={'/grimper/home'} className={"navbar-item"}>Accueil</Link>
                             <Link to={'/grimper/profil'} className={"navbar-item"}>Profil</Link>
+                            <Link to={'/grimper/nouveau-site'} className={"navbar-item"}>Ajouter un site</Link>
 
                         </div>
                         <div className="navbar-end">

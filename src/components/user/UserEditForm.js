@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
 import UserForm from "../form/UserForm";
 import {userAccountService} from "../../_services/user.account.service";
+import {useNavigate} from "react-router-dom";
 
 
 const UserEditForm = ({profil,edit}) => {
+    let navigate = useNavigate();
     const [credentials, setCredentials] = useState({
         email: profil.email,
         firstName: profil.firstName,
@@ -19,7 +21,15 @@ const UserEditForm = ({profil,edit}) => {
     const onSubmit = (e) => {
         e.preventDefault()
         console.log(credentials)
-        userAccountService.editProfil(credentials).then((res)=> console.log(res))
+        userAccountService.editProfil(credentials)
+            .then((res)=> {
+                console.log(res)
+                edit()
+                navigate('/grimper/profil')
+        })
+            .catch((err)=>{
+                console.log(err)
+            })
     }
     return (
         <div>

@@ -48,7 +48,7 @@ const UserForm = ({onChange,credentials,edit}) => {
                     />
                 </div>
             </div>
-            { !isEditUserProfil  ?
+            { !isEditUserProfil  &&
                 <div className="field">
                 <label className="label">Password</label>
                 <div className="control">
@@ -60,7 +60,7 @@ const UserForm = ({onChange,credentials,edit}) => {
                         onChange={onChange}
                     />
                 </div>
-            </div> : ''}
+            </div>}
 
             <div className="field is-grouped is-justify-content-flex-end">
 
